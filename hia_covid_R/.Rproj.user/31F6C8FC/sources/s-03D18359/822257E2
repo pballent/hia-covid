@@ -1,0 +1,25 @@
+{
+    "id": "822257E2",
+    "path": "~/Documents/hia_covid_repo/hia-covid/hia_covid_R/COVID_R_Script.R",
+    "project_path": "COVID_R_Script.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1605230117658.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "152,1",
+        "scrollLine": "123"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1606171727,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1606176664275,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,6 @@
+# Data taken from Pew Research Center. To learn more:
+# browseURL("https://www.pewresearch.org/science/datasets/")
+
+# Import SPSS .sav file:
+library(foreign)
+atp <- read.spss("ATP W55.sav")
