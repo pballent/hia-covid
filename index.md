@@ -27,8 +27,8 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 ## DATA SOURCES
 
-#### COVID-19 DATA
-- Acquire data that is used by the COVID Tracking Project, Johns Hopkins University, using the Datahub package and infrastructure. 
+### COVID-19 DATA
+- Acquire data that is used by the COVID Tracking Project, Johns Hopkins University, using the Datahub.io infrastructure via Python. 
 - Data is updated daily
 - Data is not geocoded, and only has the county and/or city text name
 - Data is collated by volunteers, and is sometimes inconsistently reported/has corrections
@@ -38,7 +38,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 - Data sources from the US Census, particularly the 5-Year Annual Community Survey, last performed in 2018
 - Some data sourced using Census-provided API to retrieve information using FIPS codes; other data sourced from the USDA Economic Research Service via flat files
 - All data is at county level, as defined by FIPS Code
-- 64,000+ variables in the ACS alone 
+- There are 64,000+ variables in the ACS 5 alone 
 - I selected the variables  total population, Black population, Native American population, Hispanic population (not mutually exclusive), percent in poverty, median income for county, and education variables (percent with high school diploma only, percent with Bachelor’s degree or higher)
 
 ### GOOGLE MOBILITY DATA
