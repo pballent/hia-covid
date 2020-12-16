@@ -12,11 +12,8 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 ## COVID-19 BACKGROUND
 - As of mid-December 2020, close to 300,000 Americans have died from COVID-19, with 2,500-3,000 dying each day from the disease as part of a fall/winter “spike”
-
 - In June 2020, the Federal Reserve forecasted a 6.5% decline in GDP in 2020 amid a  “collapse in employment” as a result of the pandemic and public health measures taken to address it (CEPAL, 2020). 
-
 - In addition to the death and morbidity caused by the disease, many have pointed to the devastating effects of the economic damage, closed schools, isolation due to public health measures, etc. 
-
 - Impacts have fallen disproportionately on Black, Hispanic, immigrant, and other disadvantaged communities due to the intersection of environmental racism, occupational hazards, inequalities in social determinants of health, and other factors. 
 
 
@@ -127,4 +124,11 @@ The residential change from baseline was a) the most reliably populated, and b) 
 - There are omitted variables in this analysis, such as the rate of true disease prevalence, the rate of hospitalization, different rates of reporting cases and deaths, and many others
 - 100 reported cases seem to predict roughly .5 - 1.5 deaths from COVID reported 14-21 days later, and this seems pretty stable over time since approximately June 1, 2020. 
 - Many models of deaths (either new deaths or total death toll from COVID-19 show an increase in adjusted R squared up until the early Fall of 2020, and then falls in adjusted R squared later. This may be due to a more widespread disease toll that is affecting nearly all US counties more “equally” than before (at the county level) 
+
+## SPECIFIC FINDINGS 
+1. The "best" one-level OLS linear regression model of the mortality toll of COVID-19 that relied on county-level characteristics was `Deaths_PER_100K ~ PCT_Black_ACS + Poverty_PCT_2018 + C(StateCD)` For the entire period 2020-06-01 to 2020-12-01, this model achieved an adjusted R squared of 0.26. Since the variables for county percentage of Black population and percentage in poverty were pretty highly correlated due to racial injustice and inequality in America, a two-level model would be a good next step. 
+
+2. What is the “best model” to predict “lagged” COVID-19 deaths, or the rate of COVID-19 deaths per 100K people in a county population? What is the relationship between reported cases and “lagged” COVID-19 deaths? 
+
+3. Is there any evidence in Google Mobility data at the county level that increased time spent at home may be related to reported deaths from COVID-19 per capita at the county level? 
 
