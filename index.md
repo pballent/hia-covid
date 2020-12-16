@@ -82,7 +82,9 @@
 - Python implementation of all-subsets regression
 - Selecting models using BIC and Adjusted R-Squared as well as logic and judgment
 
-### Visualization - Python using Seaborn, Tableau
+### Visualization 
+- I used Python, particularly matplotlib and Seaborn to generate graphs for my presentation
+- I also leveraged Tableau to generate additional chloropleth visuals
 
 ## DATA TRANSFORMATION
 ### Creating new variables to support analysis
