@@ -1,3 +1,15 @@
+
+
+I compiled COVID data from a few different publicly available sources as part of a term project for a class in the Health Informatics and Analytics MS program at the Tufts University School of Medicine. 
+
+The full presentation is available [online](https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/pub?start=false&loop=false&delayms=3000)
+
+{{.Inner}}
+
+{{< rawhtml >}}
+<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
+{{< rawhtml >}}
+
 ## COVID-19 BACKGROUND
 - As of mid-December 2020, close to 300,000 Americans have died from COVID-19, with 2,500-3,000 dying each day from the disease as part of a fall/winter “spike”
 - In June 2020, the Federal Reserve forecasted a 6.5% decline in GDP in 2020 amid a  “collapse in employment” as a result of the pandemic and public health measures taken to address it (CEPAL, 2020). 
