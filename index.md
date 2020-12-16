@@ -145,6 +145,10 @@ In my judgment, the "best" one-level OLS linear regression model of the mortalit
 - In this model, the coefficient for a 1% increase in the poverty rate in a given county was a 1.1389 (1.112 - 1.165) increase in that county's rate of deaths per 100,000 population from COVID-19.
 - In this model, the coefficient for a 1% increase in the percentage of the Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
 
+### Predicting New Deaths from COVID-19 per 100,000 Population
+In my judgment, the "best" one-level OLS linear regression model of new deaths from COVID-19 per 100,000 Population was `Deaths_New_RollingAvg_PER_100K ~ Confirmed_New_RollingAvg_PER_100K + Poverty_PCT_2018 + C(StateCD)`. This was the highest-performing 3-factor model in the time period 2020-06 to 2020-12, and it did not perform much worse than any of the models with 4-8 variables included. The highest adjusted R squared achieved was .11 with a 7-variable model, and this 3-level model achieved a  
+- For the entire period 2020-06-01 to 2020-12-01, this model achieved an adjusted R squared of 0.102.
+
 ### Spending Time at Home (Google Mobility Data) and Total COVID-19 Mortality Per 100,000 Population
 The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417 while keeping multicollinearity relatively limited. This model shows an *association* of an increase in staying home relative to baseline of 1%  is associated with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This indicates that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting to the regression. Adding a month fixed effect increased this coefficient up to around 1.5. 
 - This model showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data.
