@@ -71,7 +71,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 - Using the Census API, the average call/response time for a single variable for a single county that I clocked was about 1.5 seconds, so for roughly 3300 counties, it took about 80 minutes to look up a single variable 
 - Looking up several variables took many hours (overnight)
 - This illustrates the performance benefit of using a .CSV for this purpose
--- Next time, using something like Google Cloud with public data sets preloaded would be by far preferable than going out and finding my own or using the Census API 
+    - Next time, using something like Google Cloud with public data sets preloaded would be by far preferable than going out and finding my own or using the Census API 
 
 ### Google mobility data
 - Google mobility data was not available for every county for every day
@@ -135,18 +135,16 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 ## SPECIFIC FINDINGS 
 ### County Level Characteristics and Total COVID-19 Mortality Per 100,000 Population
-- In my judgment, the "best" one-level OLS linear regression model of the mortality toll of COVID-19 that relied on county-level characteristics was `Deaths_PER_100K ~ C(Metro) + PCT_Black_ACS + Poverty_PCT_2018 + C(StateCD)` 
-   - For the entire period 2020-06-01 to 2020-12-01, this model achieved an adjusted R squared of 0.268. Since the variables for county percentage of Black population and percentage in poverty were pretty highly correlated due to racial injustice and inequality in America, a two-level model would be a good next step for investigation. 
-   - Examining all possible subsets of selected variables in regression (255 regressions total), it became clear that state-level factors were significant. The highest adjusted R squared achievable without `StateCD` in the model was .14. 
-   - In this model, the coefficient for a 1% increase in the poverty rate in a given county was a 1.1389 (1.112 - 1.165) increase in that county's rate of deaths per 100,000 population from COVID-19.
-   - In this model, the coefficient for a 1% increase in the percentage of the Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
+In my judgment, the "best" one-level OLS linear regression model of the mortality toll of COVID-19 that relied on county-level characteristics was `Deaths_PER_100K ~ C(Metro) + PCT_Black_ACS + Poverty_PCT_2018 + C(StateCD)` 
+- For the entire period 2020-06-01 to 2020-12-01, this model achieved an adjusted R squared of 0.268. Since the variables for county percentage of Black population and percentage in poverty were pretty highly correlated due to racial injustice and inequality in America, a two-level model would be a good next step for investigation. 
+- Examining all possible subsets of selected variables in regression (255 regressions total), it became clear that state-level factors were significant. The highest adjusted R squared achievable without `StateCD` in the model was .14. 
+- In this model, the coefficient for a 1% increase in the poverty rate in a given county was a 1.1389 (1.112 - 1.165) increase in that county's rate of deaths per 100,000 population from COVID-19.
+- In this model, the coefficient for a 1% increase in the percentage of the Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
 
 ### Spending Time at Home (Google Mobility Data) and Total COVID-19 Mortality Per 100,000 Population
+The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417 while keeping multicollinearity relatively limited. This model shows an *association* of an increase in residential behavior relative to the baseline of 1% (staying at home relative to baseline +1%) is associated with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may show that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect increased this coefficient up to around 1.5. 
+- This model showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data.
 - Working with the Google mobility data had inherent risks in biasing the model, since Google mobility data was only available for some counties (approximately 65% of the data was lost when dropping all rows that did not contain Google Mobility data residential change from baseline), and these tended to be more urban areas with higher populations, incomes, education, etc. 
-- Using the regression `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417. 
-   - It showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data. 
-   - It also showed an *association* of an increase in residential behavior relative to the baseline of 1% (staying at home relative to baseline +1%) with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may show that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect increased this coefficient up to around 1.5. 
 
 ### Model Performance Decline in Fall 2020
-- Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October.
-- This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (see slides for graph). 
+Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October. This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (see slides for graph). 
