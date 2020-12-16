@@ -125,6 +125,6 @@ The residential change from baseline was a) the most reliably populated, and b) 
 - Percentage of population identifying as Black is a significant predictor of death toll for COVID-19, although this measure is correlated with other measures that also act as predictors for higher per capita death toll from COVID-19
    - A model with multiple interactions would be a good next step to analyze this
 - There are omitted variables in this analysis, such as the rate of true disease prevalence, the rate of hospitalization, different rates of reporting cases and deaths, and many others
-- 100 reported cases seem to predict roughly .5 - 1.5 deaths from COVID reported 14-21 days later, and this seems pretty stable over time since approximately June 1
+- 100 reported cases seem to predict roughly .5 - 1.5 deaths from COVID reported 14-21 days later, and this seems pretty stable over time since approximately June 1, 2020. 
 - Many models of deaths (either new deaths or total death toll from COVID-19 show an increase in adjusted R squared up until the early Fall of 2020, and then falls in adjusted R squared later. This may be due to a more widespread disease toll that is affecting nearly all US counties more “equally” than before (at the county level) 
 
