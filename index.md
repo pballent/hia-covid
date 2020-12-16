@@ -115,11 +115,18 @@ The full presentation is available [online](https://docs.google.com/presentation
    - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
 - Final dataset comprises > 1 million rows, with one row per county per day for 3,100+ counties, and the cases, deaths, rolling averages, per capita, and county-level variables such as per capita income 
 
+## ANALYSIS METHODOLOGY
+
+- I principally used Ordinary Least Squares (OLS) linear regression models to examine the data, along with descriptive statistics
+- I implemented a version of all subsets regression, where I selected 8 predictor variables from the 68 total variables and tested their performance against different dependent variables
+- I also tested how these regressions performed over segments of the full dataset, running them on the period 2020-06-01 to 2020-12-01 (the period for which the best data is available and when widespread testing and reporting of COVID-19 cases and deaths has been available), as well as one-month periods or three-month periods within this time frame 
+- To assess multicollinearity, I used Variable Inflation Factor (VIF) analysis and tried to reduce the number of correlated variables that I included in any of my models.
+   - For example, I consistently used poverty percentage instead of median income at the county level because the former had a VIF of 8.8 and the latter had a VIF of 5.4.
+
+
 ## SUMMARY OF FINDINGS
 - Multicollinearity between many measures poses challenges to analysis
    - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with the median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
-   - To somewhat reduce multicollinearity, I used Variable Inflation Factor (VIF) analysis and tried to reduce the number of correlated variables that I included in any of my models.
-   - For example, I consistently used poverty percentage instead of median income at the county level because the former had a VIF of 8.8 and the latter had a VIF of 5.4.
 - Data at a county level is fairly imprecise due to heterogeneity within counties  
    - Ex: Boston, Newton, Lowell, and Weston are in the same county but are very different communities in terms of their income per capita, poverty rates, racial/ethnic makeup, housing density, etc. 
 - Percentage of county population identifying as Black is a predictor of death rate due to COVID-19 per 100,000 population
