@@ -75,13 +75,13 @@ The full presentation is available [online](https://docs.google.com/presentation
 - Google mobility data was not available for every county for every day
 - This may have been because there were not enough Google users in that county on a specific day to a) protect the privacy of users and b) calculate valid measurements
 - There was also a “revision” made to the files which I found may have resulted in a fair amount of missing data during mid-August into early September
-- I reached out to Google via Twitter and email,  but since this was late in the game,I was never able to determine what the issue was/is
-The residential change from baseline was a) the most reliably populated, and b) unaffected by this issue, so I ended up using it in my regression to avoid dropping tons of data 
+- I reached out to Google via Twitter and email, but I was never able to determine what the issue was/is
+- The residential change from baseline was a) the most reliably populated, and b) unaffected by this issue, so I ended up using it in my regression to avoid dropping large percentages of the data for this period. 
 
 
 ## TOOLS USED 
 ### Data Wrangling - Python Jupyter Notebooks
-- Download the day’s COVID data (final analysis done on 2020-12-09
+- Download the day’s COVID data (final analysis done on 2020-12-09) 
 - Import mobility data using flat files 
 - Import county data using flat files and API
 - Geocode and clean the COVID dataset
@@ -136,6 +136,8 @@ The residential change from baseline was a) the most reliably populated, and b) 
 - Using the regression `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417. 
    - It showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data. 
    - It also showed an *association* of an increase in residential behavior relative to baseline of 1% (staying at home relative to baseline +1%) with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may shows that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect actually increased this coefficient up to around 1.5. 
-   
-- Almost all of the models seeking to predict total COVID-19 deaths per capita were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October. This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (at the county level)  (see slides for graph). 
+
+### Model Performance Decline in Fall 2020
+- Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October.
+- This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (see slides for graph). 
 
