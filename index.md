@@ -101,6 +101,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 - I used Python, particularly matplotlib and Seaborn to generate graphs for my presentation
 - I also leveraged Tableau to generate additional chloropleth visuals
 
+{{.Inner}}
 {{< rawhtml >}}
 </p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTGiSVwu4VAjxvYI3fTH5XnyGvsVXZc07FXMHlqqT8gU86zR4LyYIZCFMvBHuh_2g/embed?start=false&loop=false&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
 {{< rawhtml >}}
