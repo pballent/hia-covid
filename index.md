@@ -114,4 +114,16 @@ The residential change from baseline was a) the most reliably populated, and b) 
    - Deaths, cases, by 100K population
    - Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
    - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
+- Final dataset comprises > 1 million rows, with one row per county per day for 3,100+ counties, and the cases, deaths, rolling averages, per capita, and county-level variables such as per capita income 
+
+## SUMMARY OF FINDINGD
+- Multicollinearity between many measures poses challenges to analysis
+   - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
+- Data at a county level is rather imprecise 
+   - Ex: Boston, Newton, Lowell, and Weston are in the same county but are very different communities
+- Percentage of population identifying as Black is a significant predictor of death toll for COVID-19, although this measure is correlated with other measures that also act as predictors for higher per capita death toll from COVID-19
+   - A model with multiple interactions would be a good next step to analyze this
+- There are omitted variables in this analysis, such as the rate of true disease prevalence, the rate of hospitalization, different rates of reporting cases and deaths, and many others
+- 100 reported cases seem to predict roughly .5 - 1.5 deaths from COVID reported 14-21 days later, and this seems pretty stable over time since approximately June 1
+- Many models of deaths (either new deaths or total death toll from COVID-19 show an increase in adjusted R squared up until the early Fall of 2020, and then falls in adjusted R squared later. This may be due to a more widespread disease toll that is affecting nearly all US counties more “equally” than before (at the county level) 
 
