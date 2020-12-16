@@ -84,15 +84,15 @@ The residential change from baseline was a) the most reliably populated, and b) 
 ## DATA TRANSFORMATION
 ### Creating new variables to support analysis
 - Data change over time 
- - New deaths
- - New cases
+   - New deaths
+    - New cases
 - Rolling Averages
- - Helps to eliminate spikiness and data anomalies (negative counts due to revisions, holidays, weekend effects, etc.) 
- - Seven day non-centered windows 
+   - Helps to eliminate spikiness and data anomalies (negative counts due to revisions, holidays, weekend effects, etc.) 
+   - Seven day non-centered windows 
 - Data lag 
- - Deaths 7, 14, 21 days after the cases reported on day T
+   - Deaths 7, 14, 21 days after the cases reported on day T
 - Per capita measures 
- -- Deaths, cases, by 100K population
- -- Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
- -- Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
+   - Deaths, cases, by 100K population
+   - Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
+   - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
 
