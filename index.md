@@ -60,7 +60,6 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### Geocoding the county names in the COVID-19 Dataset
 - Some counties have the same name as the state that they are located in (New York County, Utah County, etc.) and geocoders tended to code these as states, not counties
 - Some jurisdictions were included in the COVID-19 dataset that are not at the county level at all (such as at the city level), and in some cases are places that used to be part of different FIPS codes, so the geocoder would sometimes get these codes wrong 
-
 ### Data types
 - FIPS codes should be coded as strings and sometimes contain leading zeroes, but they  are often implicitly read as integers/floats in both Excel, Python, and R leading to leading zero loss without explicitly altering their data type during import 
 ###  Geographic data consistency
@@ -106,17 +105,16 @@ The full presentation is available [online](https://docs.google.com/presentation
     - Total deaths -> New deaths
 - 7-day Rolling Averages
    - Helps to eliminate spikiness and data anomalies (negative counts due to revisions, holidays, weekend effects, etc.) 
-   - Seven-day non-centered windows 
+   - Seven-day non-centered windows
 - Data lag 
    - Deaths 7, 14, 21 days after the cases reported on day T
 - Per capita measures 
    - Deaths, cases, by 100K population
    - Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
-   - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
-- Final dataset comprises > 1 million rows, with one row per county per day for 3,100+ counties, and the cases, deaths, rolling averages, per capita, and county-level variables such as per capita income 
+   - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also misrepresent the human impact of total lives lost versus lives lost relative to county population 
+- As of 2020-12-09, the dataset included > 1.01 million rows, with one row per county per day for 3,100+ counties, and the cases, deaths, rolling averages, per capita, and county-level variables
 
 ## ANALYSIS METHODOLOGY
-
 - I principally used Ordinary Least Squares (OLS) linear regression models to examine the data, along with descriptive statistics
 - I implemented a version of all subsets regression, where I selected 8 predictor variables from the 68 total variables and tested their performance against different dependent variables
 - I also tested how these regressions performed over segments of the full dataset, running them on the period 2020-06-01 to 2020-12-01 (the period for which the best data is available and when widespread testing and reporting of COVID-19 cases and deaths has been available), as well as one-month periods or three-month periods within this time frame 
