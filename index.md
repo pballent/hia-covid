@@ -11,6 +11,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 <p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
 {{< rawhtml >}}
 
+
 ## COVID-19 BACKGROUND
 - As of mid-December 2020, close to 300,000 Americans have died from COVID-19, with 2,500-3,000 dying each day from the disease as part of a fall/winter “spike”
 - In June 2020, the Federal Reserve forecasted a 6.5% decline in GDP in 2020 amid a  “collapse in employment” as a result of the pandemic and public health measures taken to address it (CEPAL, 2020). 
@@ -99,6 +100,10 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### Visualization 
 - I used Python, particularly matplotlib and Seaborn to generate graphs for my presentation
 - I also leveraged Tableau to generate additional chloropleth visuals
+
+{{< rawhtml >}}
+</p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTGiSVwu4VAjxvYI3fTH5XnyGvsVXZc07FXMHlqqT8gU86zR4LyYIZCFMvBHuh_2g/embed?start=false&loop=false&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
+{{< rawhtml >}}
 
 ## DATA TRANSFORMATION
 ### Creating new variables to support analysis
