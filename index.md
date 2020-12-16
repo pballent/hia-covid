@@ -81,7 +81,18 @@ The full presentation is available [online](https://docs.google.com/presentation
 - There was also a “revision” made to the files which I found may have resulted in a fair amount of missing data from mid-August into early September
 - I reached out to Google via Twitter and email, but I was never able to determine what the issue was/is
 - The residential change from baseline was a) the most reliably populated, and b) unaffected by this issue, so I ended up using it in my regression to avoid dropping large percentages of the data for this period. 
+- Working with the Google mobility data had inherent risks in biasing the model, since Google mobility data was only available for some counties (approximately 65% of the data was lost when dropping all rows that did not contain Google Mobility data residential change from baseline), and these tended to be more urban areas with higher populations, incomes, education, etc. This non-random distribution of NULL Google mobility data was verified with a chi-squared test on a random sample of the data that yielded a p value less than < 2.2e-16. 
 
+### Multicollinearity
+- Multicollinearity between many measures poses challenges to analysis
+    - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with the median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas.
+
+### Limitations of county-level analysis
+- Data at a county level is fairly imprecise due to heterogeneity within counties
+    For example, Boston, Newton, Lowell, and Weston are are in the same county in Massachusetts, but they are very different communities in terms of their income per capita, poverty rates, racial/ethnic makeup, housing density, etc.
+
+### Ommitted variables
+- There were many omitted variables in this analysis, such as the rate of true disease prevalence, county-level differences in how COVID-19 cases and deaths are recorded and reported, the rate of hospitalizations, test positivity rates, and many others
 
 ## TOOLS USED 
 ### Data Wrangling - Python Jupyter Notebooks
@@ -101,12 +112,6 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### Visualization 
 - I used Python, particularly matplotlib and Seaborn to generate graphs for my presentation
 - I also leveraged Tableau to generate additional chloropleth [visuals](https://docs.google.com/presentation/d/e/2PACX-1vTGiSVwu4VAjxvYI3fTH5XnyGvsVXZc07FXMHlqqT8gU86zR4LyYIZCFMvBHuh_2g/embed?start=false&loop=false&delayms=60000)
-
-{{.Inner}}
-
-{{< rawhtml >}}
-</p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTGiSVwu4VAjxvYI3fTH5XnyGvsVXZc07FXMHlqqT8gU86zR4LyYIZCFMvBHuh_2g/embed?start=false&loop=false&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
-{{< rawhtml >}}
 
 ## DATA TRANSFORMATION
 ### Creating new variables to support analysis
@@ -132,15 +137,6 @@ The full presentation is available [online](https://docs.google.com/presentation
    - For example, I consistently used poverty percentage instead of median income at the county level because the former had a VIF of 8.8 and the latter had a VIF of 5.4.
 
 
-## SUMMARY OF FINDINGS
-- Multicollinearity between many measures poses challenges to analysis
-   - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with the median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
-- Data at a county level is fairly imprecise due to heterogeneity within counties  
-   - Ex: Boston, Newton, Lowell, and Weston are in the same county but are very different communities in terms of their income per capita, poverty rates, racial/ethnic makeup, housing density, etc. 
-- Percentage of county population identifying as Black is a predictor of death rate due to COVID-19 per 100,000 population
-- There were many omitted variables in this analysis, such as the rate of true disease prevalence, county-level differences in how COVID-19 cases and deaths are recorded and reported, the rate of hospitalizations, test positivity rates, and many others
-- Many models of deaths (either new deaths or total death toll from COVID-19 show an increase in adjusted R squared up until the early Fall of 2020, and then falls in adjusted R squared later. This may be due to a more widespread disease toll that is affecting nearly all US counties more “equally” than before (at the county level) 
-
 ## SPECIFIC FINDINGS 
 ### County Level Characteristics and Total COVID-19 Mortality Per 100,000 Population
 In my judgment, the "best" one-level OLS linear regression model of the mortality toll of COVID-19 that relied on county-level characteristics was `Deaths_PER_100K ~ C(Metro) + PCT_Black_ACS + Poverty_PCT_2018 + C(StateCD)` 
@@ -150,9 +146,9 @@ In my judgment, the "best" one-level OLS linear regression model of the mortalit
 - In this model, the coefficient for a 1% increase in the percentage of the Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
 
 ### Spending Time at Home (Google Mobility Data) and Total COVID-19 Mortality Per 100,000 Population
-The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417 while keeping multicollinearity relatively limited. This model shows an *association* of an increase in residential behavior relative to the baseline of 1% (staying at home relative to baseline +1%) is associated with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may show that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect increased this coefficient up to around 1.5. 
+The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417 while keeping multicollinearity relatively limited. This model shows an *association* of an increase in staying home relative to baseline of 1%  is associated with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This indicates that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting to the regression. Adding a month fixed effect increased this coefficient up to around 1.5. 
 - This model showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data.
-- Working with the Google mobility data had inherent risks in biasing the model, since Google mobility data was only available for some counties (approximately 65% of the data was lost when dropping all rows that did not contain Google Mobility data residential change from baseline), and these tended to be more urban areas with higher populations, incomes, education, etc. 
+
 
 ### Model Performance Decline in Fall 2020
 Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October. This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (see slides for graph). 
