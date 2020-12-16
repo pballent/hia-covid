@@ -92,7 +92,7 @@ The residential change from baseline was a) the most reliably populated, and b) 
 - Data lag 
  - Deaths 7, 14, 21 days after the cases reported on day T
 - Per capita measures 
- - Deaths, cases, by 100K population
- - Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
- - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
+ -- Deaths, cases, by 100K population
+ -- Population by county is very right-tailed, with a median of 25K, a mean of 101K, and a standard deviation of 325K
+ -- Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
 
