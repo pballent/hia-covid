@@ -116,7 +116,7 @@ The residential change from baseline was a) the most reliably populated, and b) 
    - Raw measures by themselves are not always very helpful, but inherent tension here because reporting by 100K population can also skew human impact
 - Final dataset comprises > 1 million rows, with one row per county per day for 3,100+ counties, and the cases, deaths, rolling averages, per capita, and county-level variables such as per capita income 
 
-## SUMMARY OF FINDINGD
+## SUMMARY OF FINDINGS
 - Multicollinearity between many measures poses challenges to analysis
    - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
 - Data at a county level is rather imprecise 
