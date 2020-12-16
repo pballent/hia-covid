@@ -1,15 +1,3 @@
-# COVID-19 Impacts on the US: Assembling a Large Dataset for Regression Analysis and Visualization
-
-I compiled COVID data from a few different publicly available sources as part of a term project for a class in the Health Informatics and Analytics MS program at the Tufts University School of Medicine. 
-
-The full presentation is available [online](https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/pub?start=false&loop=false&delayms=3000)
-
-{{.Inner}}
-
-{{< rawhtml >}}
-<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
-{{< rawhtml >}}
-
 ## COVID-19 BACKGROUND
 - As of mid-December 2020, close to 300,000 Americans have died from COVID-19, with 2,500-3,000 dying each day from the disease as part of a fall/winter “spike”
 - In June 2020, the Federal Reserve forecasted a 6.5% decline in GDP in 2020 amid a  “collapse in employment” as a result of the pandemic and public health measures taken to address it (CEPAL, 2020). 
@@ -18,7 +6,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 
 ## QUESTIONS OF INTEREST 
-1. How much of the mortality toll of COVID-19 can be predicted by county-level characteristics such as the state, the geographic region, how rural or urban the county is, racial/ethnic composition, county median income and poverty rates, how educated the county inhabitants are, etc. while addressing multicollinearity? How have these trends changed over time? 
+1. How much of the mortality toll of COVID-19 can be predicted by county-level characteristics such as the state, the geographic region, how rural or urban the county is, racial/ethnic composition, county median income, poverty rates, how educated the county inhabitants are, etc. while addressing multicollinearity? How have these trends changed over time? 
 
 2. What is the “best model” to predict “lagged” COVID-19 deaths, or the rate of COVID-19 deaths per 100K people in a county population? What is the relationship between reported cases and “lagged” COVID-19 deaths? 
 
@@ -31,18 +19,18 @@ The full presentation is available [online](https://docs.google.com/presentation
 - Acquire data that is used by the COVID Tracking Project, Johns Hopkins University, using the Datahub.io infrastructure via Python. 
 - Data is updated daily
 - Data is not geocoded, and only has the county and/or city text name
-- Data is collated by volunteers, and is sometimes inconsistently reported/has corrections
+- Data is collated by volunteers and is sometimes inconsistently reported/has corrections
 - Variables of interest are date, location, total cases as of that date, and total deaths as of the date 
 
 ### COUNTY DATA
 - Data sources from the US Census, particularly the 5-Year Annual Community Survey, last performed in 2018
 - Some data sourced using Census-provided API to retrieve information using FIPS codes; other data sourced from the USDA Economic Research Service via flat files
-- All data is at county level, as defined by FIPS Code
+- All data is at the county level, as defined by FIPS Code
 - There are 64,000+ variables in the ACS 5 alone 
-- I selected the variables  total population, Black population, Native American population, Hispanic population (not mutually exclusive), percent in poverty, median income for county, and education variables (percent with high school diploma only, percent with Bachelor’s degree or higher)
+- I selected the variables  total population, Black population, Native American population, Hispanic population (not mutually exclusive), percent in poverty, median income for each county, and education variables (percent with high school diploma only, percent with Bachelor’s degree or higher)
 
 ### GOOGLE MOBILITY DATA
-- Reports from Google from Google maps data, reported aggregated at county level as a time series
+- Reports from Google from Google maps data, reported aggregated at the county level as a time series
 - Data is updated daily, I hand-downloaded the CSV
 - Data is geocoded using FIPS 
 - Data is not reported for all counties, and this changes over time 
@@ -50,7 +38,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 - Variables of interest are percent change in activity from baseline in various settings (work, shopping, home, etc.) The most consistently reported was time at home spent relative to baseline, which was generally elevated (although not everywhere!) 
 
 ### COUNTY SHAPE FILES (FOR TABLEAU) 
-- Shape file that uses FIPS to code counties
+- Shapefile that uses FIPS to code counties
 - Provides polygons and locations for US counties and states 
 - I hand loaded the .CSV and imported it into Tableau 
 
@@ -58,23 +46,23 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 ### Geocoding the county names in the COVID-19 Dataset
 - Some counties have the same name as the state that they are located in (New York County, Utah County, etc.) and geocoders tended to code these as states, not counties
-- Some areas were included in the COVID-19 dataset that are not at the county level at all (such as at the city level), and in some cases are places that used to be part of different FIPS codes, so the geocoder would sometimes get these codes wrong 
+- Some jurisdictions were included in the COVID-19 dataset that are not at the county level at all (such as at the city level), and in some cases are places that used to be part of different FIPS codes, so the geocoder would sometimes get these codes wrong 
 
 ### Data types
 - FIPS codes should be coded as strings and sometimes contain leading zeroes, but they  are often implicitly read as integers/floats in both Excel, Python, and R leading to leading zero loss without explicitly altering their data type during import 
 ###  Geographic data consistency
-- Although Puerto Rico was included in the COVID-19 data, and is available in many Census datasets, I was only able to find comprehensive data for educational attainment, poverty, and rural-urban divides in flat file format from the USDA Economic Research Service, which omitted Puerto Rico in their poverty estimates, which I used as the backbone of my counties dataset. 
+- Although Puerto Rico was included in the COVID-19 data, and is available in many Census datasets, I was only able to find comprehensive data for educational attainment, poverty, and rural-urban divides in flat-file format from the USDA Economic Research Service, which omitted Puerto Rico in their poverty estimates, which I used as the backbone of my counties dataset. 
 
 ### API performance
 - Using the Census API, the average call/response time for a single variable for a single county that I clocked was about 1.5 seconds, so for roughly 3300 counties, it took about 80 minutes to look up a single variable 
 - Looking up several variables took many hours (overnight)
-- This illustrates the performance benefit of using a .CSV for this purpose, but finding .CSVs was difficult
--- Next time, using something like Google Cloud with public data sets preloaded would be by far preferable then going out and finding my own or using the Census API 
+- This illustrates the performance benefit of using a .CSV for this purpose
+-- Next time, using something like Google Cloud with public data sets preloaded would be by far preferable than going out and finding my own or using the Census API 
 
 ### Google mobility data
 - Google mobility data was not available for every county for every day
 - This may have been because there were not enough Google users in that county on a specific day to a) protect the privacy of users and b) calculate valid measurements
-- There was also a “revision” made to the files which I found may have resulted in a fair amount of missing data during mid-August into early September
+- There was also a “revision” made to the files which I found may have resulted in a fair amount of missing data from mid-August into early September
 - I reached out to Google via Twitter and email, but I was never able to determine what the issue was/is
 - The residential change from baseline was a) the most reliably populated, and b) unaffected by this issue, so I ended up using it in my regression to avoid dropping large percentages of the data for this period. 
 
@@ -103,7 +91,7 @@ The full presentation is available [online](https://docs.google.com/presentation
     - Total deaths -> New deaths
 - 7-day Rolling Averages
    - Helps to eliminate spikiness and data anomalies (negative counts due to revisions, holidays, weekend effects, etc.) 
-   - Seven day non-centered windows 
+   - Seven-day non-centered windows 
 - Data lag 
    - Deaths 7, 14, 21 days after the cases reported on day T
 - Per capita measures 
@@ -114,13 +102,13 @@ The full presentation is available [online](https://docs.google.com/presentation
 
 ## SUMMARY OF FINDINGS
 - Multicollinearity between many measures poses challenges to analysis
-   - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
+   - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with the median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
    - To somewhat reduce multicollinearity, I used Variable Inflation Factor (VIF) analysis and tried to reduce the number of correlated variables that I included in any of my models.
    - For example, I consistently used poverty percentage instead of median income at the county level because the former had a VIF of 8.8 and the latter had a VIF of 5.4.
 - Data at a county level is fairly imprecise due to heterogeneity within counties  
    - Ex: Boston, Newton, Lowell, and Weston are in the same county but are very different communities in terms of their income per capita, poverty rates, racial/ethnic makeup, housing density, etc. 
-- Percentage of population identifying as Black is a significant predictor of death toll for COVID-19, although this measure is correlated with other measures that also act as predictors for higher per capita death toll from COVID-19. 
-- There were many omitted variables in this analysis, such as the rate of true disease prevalence, county level differences in how COVID-19 cases and deaths are recorded and reported, the rate of hospitalizations, test positivity rates, and many others
+- Percentage of county population identifying as Black is a predictor of death rate due to COVID-19 per 100,000 population
+- There were many omitted variables in this analysis, such as the rate of true disease prevalence, county-level differences in how COVID-19 cases and deaths are recorded and reported, the rate of hospitalizations, test positivity rates, and many others
 - Many models of deaths (either new deaths or total death toll from COVID-19 show an increase in adjusted R squared up until the early Fall of 2020, and then falls in adjusted R squared later. This may be due to a more widespread disease toll that is affecting nearly all US counties more “equally” than before (at the county level) 
 
 ## SPECIFIC FINDINGS 
@@ -129,15 +117,14 @@ The full presentation is available [online](https://docs.google.com/presentation
    - For the entire period 2020-06-01 to 2020-12-01, this model achieved an adjusted R squared of 0.268. Since the variables for county percentage of Black population and percentage in poverty were pretty highly correlated due to racial injustice and inequality in America, a two-level model would be a good next step for investigation. 
    - Examining all possible subsets of selected variables in regression (255 regressions total), it became clear that state-level factors were significant. The highest adjusted R squared achievable without `StateCD` in the model was .14. 
    - In this model, the coefficient for a 1% increase in the poverty rate in a given county was a 1.1389 (1.112 - 1.165) increase in that county's rate of deaths per 100,000 population from COVID-19.
-   - In this model, the coefficient for a 1% increase in the percentage of Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
+   - In this model, the coefficient for a 1% increase in the percentage of the Black population in a given county was a .83 (.818 - .845) increase in that county's rate of deaths per 100,000 population from COVID-19.
 
 ### Spending Time at Home (Google Mobility Data) and Total COVID-19 Mortality Per 100,000 Population
 - Working with the Google mobility data had inherent risks in biasing the model, since Google mobility data was only available for some counties (approximately 65% of the data was lost when dropping all rows that did not contain Google Mobility data residential change from baseline), and these tended to be more urban areas with higher populations, incomes, education, etc. 
 - Using the regression `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417. 
    - It showed similar effects of poverty, percentage Black population, Metro description, and states to the other models that didn't take into account mobility data. 
-   - It also showed an *association* of an increase in residential behavior relative to baseline of 1% (staying at home relative to baseline +1%) with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may shows that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect actually increased this coefficient up to around 1.5. 
+   - It also showed an *association* of an increase in residential behavior relative to the baseline of 1% (staying at home relative to baseline +1%) with an increased rate of death from COVID-19 per 100,000 population of 1.0972 (1.031 - 1.163). This may show that people in areas more impacted by COVID-19 deaths may be staying home more, even when adding in poverty, state, percentage Black population, and metropolitan setting. Adding a month fixed effect increased this coefficient up to around 1.5. 
 
 ### Model Performance Decline in Fall 2020
 - Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were more effective at predicting the county's death toll early in the pandemic, and their adjusted R squared measures began to fall starting in the period September - October.
 - This may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before (see slides for graph). 
-
