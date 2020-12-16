@@ -84,10 +84,11 @@ The residential change from baseline was a) the most reliably populated, and b) 
 ## DATA TRANSFORMATION
 ### Creating new variables to support analysis
 - Data change over time 
-- New deaths
-- New cases
+- - New deaths
+- - New cases
 - Rolling Averages
 - - Helps to eliminate spikiness and data anomalies (negative counts due to revisions, holidays, weekend effects, etc.) 
+- - Seven day non-centered windows 
 - Data lag 
 - - Deaths 7, 14, 21 days after the cases reported on day T
 - Per capita measures 
