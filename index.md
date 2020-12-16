@@ -1,3 +1,6 @@
+<!-- raw html -->
+{{.Inner}}
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/pballent/hia-covid/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
@@ -5,8 +8,6 @@ You can use the [editor on GitHub](https://github.com/pballent/hia-covid/edit/gh
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
-
-<p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/embed?start=false&loop=false&delayms=60000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
