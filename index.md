@@ -119,6 +119,7 @@ The residential change from baseline was a) the most reliably populated, and b) 
 ## SUMMARY OF FINDINGS
 - Multicollinearity between many measures poses challenges to analysis
    - Examples of highly correlated variables: percent living in poverty and percent with Bachelor's degree or higher, and both of these correlate with median income of a given county. Mobility data indicating "staying at home" correlates highly with higher income counties, which also tend to be urban areas rather than rural or remote areas. 
+   - To somewhat reduce multicollinearity, I used Variable Inflation Factor analysis and tried to reduce the number of correlated variables that I included in any of my models. However, multicollinearity persisted. 
 - Data at a county level is rather imprecise 
    - Ex: Boston, Newton, Lowell, and Weston are in the same county but are very different communities
 - Percentage of population identifying as Black is a significant predictor of death toll for COVID-19, although this measure is correlated with other measures that also act as predictors for higher per capita death toll from COVID-19
