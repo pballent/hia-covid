@@ -1,9 +1,8 @@
 library(readr)
 library(dplyr)
 
-full_dataset_sample <- read_csv("/Users/philip.ballentine/Documents/hia_covid_repo/hia_covid_data_assets/hia_covid_combined_post0601.csv")
+full_dataset_sample <- read_csv("/Users/philip.ballentine/Documents/hia_covid_repo/hia_covid_data_assets/hia_covid_combined_sample.csv")
 
-#
 head(full_dataset_sample)
 
 ## Getting the subset selection
@@ -49,7 +48,7 @@ coef(regfit,5)
 
 
 #https://www.rdocumentation.org/packages/lsr/versions/0.5/topics/quantileCut
-install.packages("lsr")
+#install.packages("lsr")
 library(lsr)
 
 
@@ -152,3 +151,27 @@ data = full_dataset_sample)
  
  summary(model_big)
  
+ dat$size <- ifelse(dat$Sepal.Length < median(dat$Sepal.Length),
+                    "small", "big"
+ )
+ 
+ 
+ ## CHI SQUARE TEST OF MOBILITY NULLITY
+full_dataset_sample$Mob_ISNA <- ifelse(is.na(full_dataset_sample$residential_PCT_CFB), "NULL", "NOT_NULL")
+
+METRO_CHISQ <- cbind.data.frame(full_dataset_sample$Mob_ISNA, full_dataset_sample$residential_PCT_CFB, full_dataset_sample$Metro)
+
+head(METRO_CHISQ)
+summary(table(full_dataset_sample$Mob_ISNA, full_dataset_sample$Metro))
+
+library(ggplot2)
+
+ggplot(METRO_CHISQ) +
+  aes(x = full_dataset_sample$Mob_ISNA, fill = full_dataset_sample$Metro) +
+  geom_bar() +
+  scale_fill_hue() +
+  theme_minimal()
+
+
+test <- chisq.test(table(full_dataset_sample$Mob_ISNA, full_dataset_sample$Metro))
+test
