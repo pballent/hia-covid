@@ -157,6 +157,8 @@ data = full_dataset_sample)
  
  
  ## CHI SQUARE TEST OF MOBILITY NULLITY
+ # https://www.statsandr.com/blog/chi-square-test-of-independence-in-r/
+ 
 full_dataset_sample$Mob_ISNA <- ifelse(is.na(full_dataset_sample$residential_PCT_CFB), "NULL", "NOT_NULL")
 
 METRO_CHISQ <- cbind.data.frame(full_dataset_sample$Mob_ISNA, full_dataset_sample$residential_PCT_CFB, full_dataset_sample$Metro)
