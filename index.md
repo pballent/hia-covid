@@ -149,8 +149,11 @@ In my judgment, the "best" one-level OLS linear regression model of the mortalit
 - There is a correlation in the dataset between counties with higher percentages of Black population and more poverty, due to systemic racism and racial inequality in our society, so these effects often acted in tandem together. Using our existing example, county with both a 10% higher percentage of population in poverty and a 10% higher percentage Black population would predict a death rate of 50 + (.83 * 10) + (1.14 * 10) or 69.7 (total deaths: 697). This illustrates the strong relationship in the data showing COVID-19's unequal impact along racial and socioeconomic lines. 
 
 ### Predicting New Deaths from COVID-19 per 100,000 Population
-In my judgment, the "best" one-level OLS linear regression model of new deaths from COVID-19 per 100,000 Population was `Deaths_New_RollingAvg_PER_100K ~ Confirmed_New_RollingAvg_PER_100K + Poverty_PCT_2018 + C(StateCD)`. 
-- This was the highest-performing 3-factor model in the time period 2020-06 to 2020-12, and it did not perform much worse than any of the models with 4-8 variables included. The highest adjusted R squared achieved was .11 with a 7-variable model, and this 3-level model achieved an adjusted R squared of 0.102.
+In my judgment, the "best" one-level OLS linear regression model of new deaths from COVID-19 per 100,000 Population was `Deaths_New_14_RollingAvg_PER_100K ~ Confirmed_New_RollingAvg_PER_100K + Poverty_PCT_2018 + C(StateCD)`. 
+- This was the highest-performing 3-factor model in the time period 2020-06 to 2020-12, and it did not perform much worse than any of the models with 4-8 variables included. The highest adjusted R squared achieved was .11 with a 7-variable model, and this 3-level model achieved an adjusted R squared of 0.140.
+- In this model, each newly reported case (per 100k population) is estimated to result in .0120 deaths (.012-.012) reported 14 days later. 
+- In this model, each percentage point of residents in poverty is estimated to result in a daily reported death rate per 100,000 population that is .0105 higher (.010 - .011). 
+- In this model, there are large state fixed effects, which may indicate that state policies are having an important impact on the actual COVID-19 mortality rate, or that there are state-level differences in the reporting of cases and/or deaths. I think that both of these options are likely true. 
 
 ### Spending Time at Home (Google Mobility Data) and Total COVID-19 Mortality Per 100,000 Population
 The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty_PCT_2018 + C(StateCD) + PCT_Black_ACS + C(Metro)` achieved an adjusted R squared of 0.417 while keeping multicollinearity relatively limited. 
