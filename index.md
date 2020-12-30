@@ -31,7 +31,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 ## DATA SOURCES
 
 ### COVID-19 DATA
-- Acquire data that is used by the COVID Tracking Project, Johns Hopkins University, using the Datahub.io infrastructure via Python. 
+- Acquired data that is used by the COVID Tracking Project, Johns Hopkins University, using the Datahub.io API accessed via Python. 
 - Data is updated daily
 - Data is not geocoded, and only has the county and/or city text name
 - Data is collated by volunteers and is sometimes inconsistently reported/has corrections
@@ -40,16 +40,16 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### COUNTY DATA
 - Data sources from the US Census, particularly the 5-Year Annual Community Survey, last performed in 2018
 - Some data sourced using Census-provided API to retrieve information using FIPS codes; other data sourced from the USDA Economic Research Service via flat files
-- All data is at the county level, as defined by FIPS Code
+- All data is at the county level, as defined by the County-Level FIPS Code
 - There are 64,000+ variables in the ACS 5 alone 
 - I selected the variables  total population, Black population, Native American population, Hispanic population (not mutually exclusive), percent in poverty, median income for each county, and education variables (percent with high school diploma only, percent with Bachelor’s degree or higher)
 
 ### GOOGLE MOBILITY DATA
 - Reports from Google from Google maps data, reported aggregated at the county level as a time series
-- Data is updated daily, I hand-downloaded the CSV
-- Data is geocoded using FIPS 
+- Data is updated daily, I manually downloaded the CSV files
+- Data is geocoded using Counth-Level FIPS codes
 - Data is not reported for all counties, and this changes over time 
-- Data gap for ~50% of counties in September that I reached out to Google to ask about 
+- Data gap for ~50% of counties in mid-August to early September in many of the measures that I reached out to Google to ask about 
 - Variables of interest are percent change in activity from baseline in various settings (work, shopping, home, etc.) The most consistently reported was time at home spent relative to baseline, which was generally elevated (although not everywhere!) 
 
 ### COUNTY SHAPE FILES (FOR TABLEAU) 
