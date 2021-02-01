@@ -47,7 +47,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### GOOGLE MOBILITY DATA
 - Reports from Google from Google maps data, reported aggregated at the county level as a time series
 - Data is updated daily, I manually downloaded the CSV files
-- Data is geocoded using Counth-Level FIPS codes
+- Data is geocoded using county-Level FIPS codes
 - Data is not reported for all counties, and this changes over time 
 - Data gap for ~50% of counties in mid-August to early September in many of the measures that I reached out to Google to ask about 
 - Variables of interest are percent change in activity from baseline in various settings (work, shopping, home, etc.) The most consistently reported was time at home spent relative to baseline, which was generally elevated (although not everywhere!) 
@@ -55,7 +55,7 @@ The full presentation is available [online](https://docs.google.com/presentation
 ### COUNTY SHAPE FILES (FOR TABLEAU) 
 - Shapefile that uses FIPS to code counties
 - Provides polygons and locations for US counties and states 
-- I hand loaded the .CSV and imported it into Tableau 
+
 
 ## DATA ISSUES
 
@@ -167,4 +167,4 @@ The regression model `Deaths_PER_100K ~ residential_PCT_CFB_RollingAvg + Poverty
 - Almost all of the models seeking to predict total COVID-19 deaths per capita or new COVID-19 deaths were increasingly effective at predicting the county's death toll from the April-September time period, and their adjusted R squared measures began to fall starting in the period October - November. 
 - This may indicate that there was more local disparity in collecting case and death data earlier in the pandemic, and this decreased over time as testing became more widespread and there were more resources devoted to data collection. However, this explanation does not explain why the models' performance began to decline after September 2020.
 - The decline in model performance, if it shows anything meaningful, may indicate that the pandemic death toll has become less impacted by county-level factors since the beginning of the fall "surge" and COVID-19 has spread more evenly across the country and is affecting counties more “equally” than before. 
-- This could also be an artifact of some kind, since there were only six months' worth of models showing steady increase, and then two months of models showing a decline in adjusted R squared. 
+- This could also be an artifact of some kind, since there was only six months' worth of models showing a steady increase in model performance, and then two months of models showing a decline in adjusted R squared. 
