@@ -1,7 +1,9 @@
 
 # COVID-19 Impacts on the US: Assembling a Large Dataset for Regression Analysis and Visualization
 
-I compiled COVID data from a few different publicly available sources as part of a term project for a class in the Health Informatics and Analytics MS program at the Tufts University School of Medicine. 
+In December 2020, I compiled COVID data from a few different publicly available sources as part of a term project for a class in the Health Informatics and Analytics MSc program at the Tufts University School of Medicine: HIA 217 Multivariable Data Analysis and Visualization.
+
+I created a dataset using Python, accessing COVID-19 case and location data through APIs from the US Census and the COVID Tracking Project, and then performed a variety of time-series analysis using linear regression, chi squared tests, and data visualization using Seaborn and Matplotlib in Python and Tableau.
 
 The full presentation is available [online](https://docs.google.com/presentation/d/e/2PACX-1vRIzsLQuog1xqa6DBsB7gwYrb-0ciUR3HrKJXlPqOix5xYM7DNlx5843hiWaJzrS1NstusXbK8IIJl_/pub?start=false&loop=false&delayms=3000)
 
